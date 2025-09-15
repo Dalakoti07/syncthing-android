@@ -29,11 +29,20 @@ dependencies {
 }
 
 android {
+    namespace = "com.nutomic.syncthingandroid"
     val ndkVersionShared = rootProject.extra.get("ndkVersionShared")
     // Changes to these values need to be reflected in `../docker/Dockerfile`
     compileSdk = 34
     buildToolsVersion = "34.0.0"
     ndkVersion = "${ndkVersionShared}"
+
+    configurations.all {
+        resolutionStrategy {
+            force("org.jetbrains.kotlin:kotlin-stdlib:1.8.10")
+            force("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10")
+            force("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10")
+        }
+    }
 
     buildFeatures {
         dataBinding = true
@@ -81,7 +90,7 @@ android {
 
     // Otherwise libsyncthing.so doesn't appear where it should in installs
     // based on app bundles, and thus nothing works.
-    packagingOptions {
+    packaging {
         jniLibs {
             useLegacyPackaging = true
         }
