@@ -15,7 +15,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.nutomic.syncthingandroid.BuildConfig;
+//import com.nutomic.syncthingandroid.BuildConfig;
 import com.nutomic.syncthingandroid.SyncthingApp;
 import com.nutomic.syncthingandroid.activities.ShareActivity;
 import com.nutomic.syncthingandroid.http.GetRequest;
@@ -223,7 +223,7 @@ public class RestApi {
             throw new RuntimeException("config is null: " + result);
         }
         Log.v(TAG, "onReloadConfigComplete: Successfully parsed configuration.");
-        if (BuildConfig.DEBUG) {
+        if (true) {
             Log.v(TAG, "mConfig.remoteIgnoredDevices = " + new Gson().toJson(mConfig.remoteIgnoredDevices));
         }
 
@@ -321,7 +321,7 @@ public class RestApi {
                     ignoredFolder.label = folderLabel;
                     ignoredFolder.time = dateFormat.format(new Date());
                     device.ignoredFolders.add(ignoredFolder);
-                    if (BuildConfig.DEBUG) {
+                    if (true) {
                         Log.v(TAG, "device.ignoredFolders = " + new Gson().toJson(device.ignoredFolders));
                     }
                     sendConfig();

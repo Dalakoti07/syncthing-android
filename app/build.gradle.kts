@@ -35,6 +35,14 @@ android {
     buildToolsVersion = "34.0.0"
     ndkVersion = "${ndkVersionShared}"
 
+    configurations.all {
+        resolutionStrategy {
+            force("org.jetbrains.kotlin:kotlin-stdlib:1.8.10")
+            force("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10")
+            force("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10")
+        }
+    }
+
     buildFeatures {
         dataBinding = true
         viewBinding = true
