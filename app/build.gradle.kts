@@ -29,7 +29,6 @@ dependencies {
 }
 
 android {
-    namespace = "com.nutomic.syncthingandroid"
     val ndkVersionShared = rootProject.extra.get("ndkVersionShared")
     // Changes to these values need to be reflected in `../docker/Dockerfile`
     compileSdk = 34
@@ -90,7 +89,7 @@ android {
 
     // Otherwise libsyncthing.so doesn't appear where it should in installs
     // based on app bundles, and thus nothing works.
-    packaging {
+    packagingOptions {
         jniLibs {
             useLegacyPackaging = true
         }
